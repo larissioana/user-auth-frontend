@@ -16,11 +16,21 @@ const ProfilePage = () => {
     const [imageSrc, setImageSrc] = useState('');
     const [imageLoaded, setImageLoaded] = useState(false);
     const navigate = useNavigate();
-
     useEffect(() => {
         const fetchUserProfile = async () => {
             setLoading(true);
             setError("");
+
+            const cachedProfile = localStorage.getItem("userProfile");
+            if (cachedProfile) {
+                const parsedProfile = JSON.parse(cachedProfile);
+                setUserProfile(parsedProfile);
+                setEditableProfile({
+                    name: parsedProfile.name,
+                    email: parsedProfile.email,
+                    profileImage: parsedProfile.profileImage || "",
+                });
+            }
 
             try {
                 const token = localStorage.getItem("authToken");
@@ -36,9 +46,6 @@ const ProfilePage = () => {
                         Authorization: `Bearer ${token}`,
                     },
                     withCredentials: true,
-                    params: {
-                        _cache: new Date().getTime() // Add a cache-busting parameter
-                    }
                 });
 
                 setUserProfile(response.data);
@@ -48,7 +55,7 @@ const ProfilePage = () => {
                     profileImage: response.data.profileImage || "",
                 });
 
-                localStorage.setItem("userProfile", JSON.stringify(response.data)); // Cache updated profile
+                localStorage.setItem("userProfile", JSON.stringify(response.data));
                 setLoading(false);
             } catch (error) {
                 setError(error.response ? error.response.data.message : "Failed to fetch profile data");
@@ -58,6 +65,7 @@ const ProfilePage = () => {
 
         fetchUserProfile();
     }, []);
+
 
     useEffect(() => {
         if (userProfile && userProfile.profileImage) {
