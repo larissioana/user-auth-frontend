@@ -52,10 +52,10 @@ const Auth = ({ auth, setAuth }) => {
                 {
                     auth === "login" ?
                         <form className="auth-form">
+                            <h1>Login</h1>
                             <Suspense fallback={<div>Loading...</div>}>
-                                <h1>Login</h1>
+                                <LazyComponent />
                             </Suspense>
-                            <LazyComponent />
                         </form>
                         :
                         <form className="auth-form">
