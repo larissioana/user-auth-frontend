@@ -1,0 +1,16 @@
+.input 
+{
+    background: none;
+    color: var(--textClr);
+    padding: 1rem;
+    width: 20rem;
+    border-radius: .2rem;
+    border: 1px solid gray;
+    font-size: .9rem;
+}
+
+.form 
+{
+    display: flex;
+    flex-direction: column;
+}

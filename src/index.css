@@ -1,0 +1,21 @@
+:root
+{
+  --textClr: #434343;
+}
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body 
+{
+  overflow-x: hidden;
+  background: rgb(210, 207, 207);
+  color: var(--textClr);
+  font-family: "Patrick Hand", cursive;
+  font-display: swap;
+}
+

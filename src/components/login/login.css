@@ -1,0 +1,31 @@
+.login
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.auth-btn 
+{
+    width: 20rem;
+    border: 1px solid gray;
+    background: none;
+    padding: 1rem;
+    color: var(--textClr);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .5s ease-in;
+
+    &:hover
+    {
+        background: rgb(56, 53, 53);
+        color: #fff;
+    }
+}
+
+.error-message 
+{
+    font-size: 1.1rem;
+}

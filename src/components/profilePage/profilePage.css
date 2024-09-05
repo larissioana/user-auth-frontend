@@ -1,0 +1,102 @@
+.profile-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.update-profile 
+{
+    padding-bottom: 4rem;
+    font-size: clamp(1.3rem, 3vw, 2.8rem);
+}
+
+.user-profile 
+{
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.profile-info 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.select, label
+{
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
+    color: rgb(61, 65, 61);
+}
+
+.select
+{
+    cursor: pointer;
+}
+
+
+.profile-input 
+{
+    background: none;
+    border-bottom: 1px solid #1f1f1f;
+    padding: .5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    &:focus
+    {
+        outline: none;
+    }
+}
+
+.update-btn,
+.sign-out-btn
+{
+    background: rgb(79, 76, 76);
+    border: 1px solid #1f1f1f;
+    padding: 1rem 2rem;
+    width: max-content;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 2rem 9rem;
+}
+
+.name 
+{
+    font-size: clamp(1.1rem, 2vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    
+}
+
+.span 
+{
+    text-transform: lowercase;
+}
+
+.user-profile-avatar
+{
+    object-fit: cover;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid #5d5a5a;
+    border-radius: 50%;
+}
+
+.loading,
+.error
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
