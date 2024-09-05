@@ -42,14 +42,4 @@ export default defineConfig({
       threshold: 10240,
     })
   ],
-  build: {
-    minify: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom']
-        }
-      }
-    }
-  }
 })
