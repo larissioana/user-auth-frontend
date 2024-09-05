@@ -37,9 +37,5 @@ export default defineConfig({
         quality: 85,
       },
     }),
-    compression({
-      algorithm: 'gzip',
-      threshold: 10240,
-    })
   ],
 })
