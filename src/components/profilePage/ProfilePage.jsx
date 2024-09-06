@@ -16,6 +16,7 @@ const ProfilePage = () => {
     const [imageSrc, setImageSrc] = useState('');
     const [imageLoaded, setImageLoaded] = useState(false);
     const navigate = useNavigate();
+
     useEffect(() => {
         const fetchUserProfile = async () => {
             setLoading(true);
@@ -123,7 +124,7 @@ const ProfilePage = () => {
     };
 
     if (loading) {
-        return <p className="loading">Loading user data...</p>;
+        return <p className="loader"></p>;
     }
 
     if (error) {

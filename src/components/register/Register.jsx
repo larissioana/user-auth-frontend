@@ -26,7 +26,7 @@ const Register = ({ setAuth }) => {
         }
         try {
             setError("");
-            const response = await axios.post('https://user-auth-backend-91ue.onrender.com/api/user/register', formData, {
+            const response = await axios.post('http:localhost:3000/api/user/register', formData, {
                 withCredentials: true
             });
             if (response.status === 201) {

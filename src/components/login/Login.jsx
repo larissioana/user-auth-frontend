@@ -10,7 +10,7 @@ const Login = () => {
         password: ""
     });
     const [error, setError] = useState("");
-    const navigate = useNavigate();
+    const navigate = useNavigate();;
 
     const handleChange = async (e) => {
         const { name, value } = e.target;
@@ -30,9 +30,10 @@ const Login = () => {
 
         try {
             setError("");
-            const response = await axios.post('https://user-auth-backend-91ue.onrender.com/api/user/login', formData, {
+            response = await axios.post('https://user-auth-backend-91ue.onrender.com/api/user/login', formData, {
                 withCredentials: true
             });
+
             const { token } = response.data;
             if (token) {
                 localStorage.setItem("authToken", token);
