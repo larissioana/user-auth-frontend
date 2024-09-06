@@ -67,13 +67,14 @@ const ProfilePage = () => {
         fetchUserProfile();
     }, []);
 
-
     useEffect(() => {
         if (userProfile && userProfile.profileImage) {
+            const imgPath = `https://user-auth-backend-91ue.onrender.com/${userProfile.profileImage}`;
+            setImageSrc(imgPath);
+
             const img = new Image();
-            img.src = `https://user-auth-backend-91ue.onrender.com//api/user/profile/${userProfile.profileImage}`;
+            img.src = imgPath;
             img.onload = () => {
-                setImageSrc(img.src);
                 setImageLoaded(true);
             };
         }
@@ -94,6 +95,8 @@ const ProfilePage = () => {
                 ...prevState,
                 profileImage: file,
             }));
+            setImageSrc(URL.createObjectURL(file));
+            setImageLoaded(true);
         }
     };
 
@@ -133,9 +136,7 @@ const ProfilePage = () => {
     }
 
     if (error) {
-        return <p className="error" style={{
-            fontSize: "2rem"
-        }}>{error}</p>;
+        return <p className="error" style={{ fontSize: "2rem" }}>{error}</p>;
     }
 
     const imageUrl = imageSrc || avatar;
@@ -151,6 +152,7 @@ const ProfilePage = () => {
         });
         navigate("/");
     };
+
 
     return (
         <div className="profile-container">
