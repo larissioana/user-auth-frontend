@@ -33,6 +33,7 @@ const Login = () => {
             const response = await axios.post('https://user-auth-backend-91ue.onrender.com/api/user/login', formData, {
                 withCredentials: true
             });
+
             const { token } = response.data;
             if (token) {
                 localStorage.setItem("authToken", token);

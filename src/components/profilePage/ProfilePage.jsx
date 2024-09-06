@@ -71,7 +71,7 @@ const ProfilePage = () => {
     useEffect(() => {
         if (userProfile && userProfile.profileImage) {
             const img = new Image();
-            img.src = `https://user-auth-backend-91ue.onrender.com/${userProfile.profileImage}`;
+            img.src = `https://user-auth-backend-91ue.onrender.com//api/user/profile/${userProfile.profileImage}`;
             img.onload = () => {
                 setImageSrc(img.src);
                 setImageLoaded(true);
@@ -99,6 +99,7 @@ const ProfilePage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const formData = new FormData();
         formData.append('name', editableProfile.name);
         formData.append('email', editableProfile.email);
@@ -120,15 +121,21 @@ const ProfilePage = () => {
             setLoading(false);
         } catch (error) {
             setError(error.response ? error.response.data.message : "An unexpected error occurred");
+        } finally {
+            setLoading(false);
         }
     };
 
     if (loading) {
-        return <p className="loader"></p>;
+        return <div className="loader-container">
+            <p className="loader"></p>
+        </div>
     }
 
     if (error) {
-        return <p className="error">{error}</p>;
+        return <p className="error" style={{
+            fontSize: "2rem"
+        }}>{error}</p>;
     }
 
     const imageUrl = imageSrc || avatar;
@@ -155,7 +162,7 @@ const ProfilePage = () => {
                             type="file"
                             accept="image/*"
                             onChange={handleFileChange}
-                            style={{ display: 'none' }}
+                            style={{ display: "none" }}
                             id="profile-image-upload"
                         />
                         <label htmlFor="profile-image-upload" className="profile-image-label">
